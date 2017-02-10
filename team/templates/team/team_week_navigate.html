@@ -1,0 +1,14 @@
+<br />
+<span>
+	<small>{{ tournament.tournament_name }}</small>
+</span>
+{% if tournament.tournament_week|add:"0" > 1 %}
+	<a class="btn btn-default btn-xs" role="button" href="/team/{{ tournament.tournament_week|add:"-1" }}/">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	</a>
+{% endif %}
+{% if tournament.tournament_week|add:"0" < tournament_count %}
+	<a class="btn btn-default btn-xs" role="button" href="/team/{{ tournament.tournament_week|add:"1" }}/">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	</a>
+{% endif %}

@@ -1,0 +1,24 @@
+{% extends "hacksawgolf/base_login.html" %}
+
+{% block title %}Hacksaw Golf{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div class="login_brand_container">
+				<span class="wendy_one medium_green login_brand">
+					Hacksaw Golf
+				</span>
+				<span class="login_heading">Error</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="well">
+			<span>Sorry, an unexpected error has occurred.  Please try going to the <a href="{% url 'home:home' %}">home page</a></span>
+			<br />
+			<span>If this continues to happen please wait awhile until we can fix the issue.
+		</div>
+	</div>
+</div>

@@ -1,0 +1,79 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Tournaments{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Tournament List
+			</h3>
+		</div>
+	</div>
+
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th class="col-xs-1 golfer_column_heading">
+					Week
+				</th>
+				<th class="col-xs-11 golfer_column_heading">
+					Tournament
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for tournament in tournaments %}
+				<tr data-toggle="collapse" data-target="#tournament{{ tournament.tournament_id }}" class="accordion-toggle {% if forloop.counter|divisibleby:2 %}row_even{% else %}row_odd{% endif %}" style="cursor:pointer;">
+					<td class="col-xs-1">
+						{{ tournament.tournament_week }}
+					</td>
+					<td class="col-xs-11">
+						{{ tournament.tournament_name }}
+					</td>
+				</tr>
+				<tr>
+				    <td colspan="2" class="hiddenRow">
+				        <div class="accordion-body collapse" id="tournament{{ tournament.tournament_id }}">
+				        	<table class="table table-condensed" style="font-size:12px;">
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">Start:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.picks_lock_date|date:"F j" }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">Winner gets:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.anyone }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">Multi-win gets:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.multiwin }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">1st place:</td>
+				        			<td class="col-xs-7 col-sm-10 dark_green bold">{{ tournament.tournament_winner.user_team_name }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">1st winnings:</td>
+				        			<td class="col-xs-7 col-sm-10 dark_green bold">{{ tournament.tournament_winnings }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">2nd place:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_second_place.user_team_name|default:"N/A" }}</td>
+				        		</tr>
+				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">2nd winnings:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_second_place_winnings|default:"N/A" }}</td>
+				        		</tr>
+				        	</table>
+				        </div>
+				    </td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}

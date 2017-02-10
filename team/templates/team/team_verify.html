@@ -1,0 +1,75 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Verify Team{% endblock %}
+
+{% block content %}
+
+{% if tournament %}
+
+	<input type="hidden" name="tournament_id" id="tournament_id" value="{{ tournament.tournament_id }}" />
+
+	<div class="container page_heading_container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h3 class="page_heading">
+					Verify Team
+					<br />
+					<small>{{ tournament.tournament_name }}</small>
+				</h3>
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:5px;">
+			<div class="col-xs-8 col-sm-5 col-md-4 golfer_column_heading">Golfer</div>
+			<div class="col-xs-4 golfer_column_heading">Salary</div>
+		</div>
+		{% for selected_golfer in selected_golfers %}
+			<div class="row golfer_list_row {% cycle 'row_odd' 'row_even' %}">
+				<div class="col-xs-8 col-sm-5 col-md-4">
+					{{ selected_golfer.golfer.golfer_lname }}, {{ selected_golfer.golfer.golfer_fname }}
+				</div>
+				<div class="col-xs-4">
+					{{ selected_golfer.salary }}
+				</div>
+			</div>
+		{% endfor %}
+		<div class="row" id="verify_team_totals">
+			<div class="col-xs-8 col-sm-5 col-md-4">Total:</div>
+			<div class="col-xs-4">{{ salary_total.salary__sum }}</div>
+		</div>
+		<div class="row" style="margin-top:15px;">
+			<div class="col-xs-7 col-md-4">
+				<button class="btn btn-lg btn-default btn-block" id="submit_team_button" type="button" onclick="btnSubmitTeam_click()">Submit team</button>
+			</div>
+			<div class="col-xs-5 col-md-2">
+				<a href="{% url 'team:edit_team' %}" class="btn btn-lg btn-default btn-block" role="button">Edit team</a>
+			</div>
+		</div>
+	</div>
+
+{% else %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h3 class="page_heading">
+					Verify Team
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 ">
+				<div class="panel panel-default">
+					<div class="panel-body bg-warning">
+						<span>
+							You navigated to this page incorrectly.  You should only see this page after selecting your team for a tournament and clicking 'Continue'.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+
+{% endblock %}

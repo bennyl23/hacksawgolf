@@ -1,0 +1,87 @@
+<!-- Selected golfer section -->
+<nav class="navbar navbar-default navbar-fixed-top" id="my_team_selection_container">
+	<div class="container">
+		<div class="row">
+			<div class="panel panel-default col-xs-12" style="padding:0; margin:0;">
+				<div class="panel-heading" data-toggle="collapse" data-target="#my_team_selections" style="cursor:pointer;">
+					Total Salary:&nbsp;
+					<span class="badge" id="salary_total">{{ team.salary_total.salary__sum|default_if_none:"0" }}</span>
+					&nbsp;for&nbsp;
+					<span class="badge" id="num_golfers_selected">{{ team.team_members|length }}</span>
+					&nbsp;golfer(s)
+					<div class="pull-right">
+						<a href="#">
+							<span id="my_team_selections_chevron" class="glyphicon glyphicon-chevron-down"></span>
+						</a>
+					</div>
+				</div>
+				<div class="collapse" id="my_team_selections">
+					<div class="panel-body">
+						<!-- show column headers only if golfers have been selected -->
+						<div class="row {% if team.team_members.all %}show{% else %}hidden{% endif %}" style="margin-bottom:5px;" id="selected_golfer_headings">
+							<div class="col-xs-3 col-sm-2 col-md-1">&nbsp;</div>
+							<div class="col-xs-7 col-sm-4 col-md-3 golfer_column_heading">Golfer</div>
+							<div class="col-xs-1 col-sm-1 golfer_column_heading">Sal</div>
+						</div>
+
+						<form action="{% url 'team:verify_team' %}" name="team_selection_form" id="team_selection_form" method="post" autocomplete="off">{% csrf_token %}
+							<div id="selected_golfer_form_container">
+								<input type="hidden" name="tournament_id" id="tournament_id" value="{{ tournament.tournament_id }}" autocomplete="off" />
+
+								<div class="alert alert-info hidden" id="selected_golfer_info_message">Select your golfers below.</div>
+
+								<!--- loop over the user's previously submitted list of golfers --->
+								{% for team_member in team.team_members %}
+									{% include "team/team_member.html" with team_member=team_member counter=forloop.counter %}
+								{% endfor %}
+
+							</div>
+							<!-- Only enable continue button if 6 golfers selected --->
+							<button class="btn btn-lg btn-default btn-block {% if team.team_members|length == 0 %}hidden disabled{% elif team.team_members|length < 6 %}disabled{% endif %}" {% if team.team_members|length < 6 %}disabled="disabled"{% endif %} id="continue_onto_confirmation_button" type="button" onclick="btnContinueOntoConfirm_click()">Continue</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="row" style="margin-top:25px;">
+		<div class="col-xs-12">
+			<h3 class="page_heading" style="margin:10px 0">
+				Select Team
+				{% include "team/team_week_navigate.html" with tournament=view.tournament tournament_count=tournament_count %}
+			</h3>
+		</div>
+	</div>
+</div>
+
+<!-- Golfer list -->
+<div class="container">
+	<div class="well">
+		<div class="row" style="margin-bottom:10px;" id="add_golfer_row_column_headings">
+			<div class="col-xs-10 col-sm-4 golfer_column_heading">
+				Golfer
+			</div>
+			<div class="col-xs-2 col-sm-8 golfer_column_heading" >
+				Salary
+			</div>
+		</div>
+		{% for tournament_participant in tournament_participants %}
+			<div class="row {% if tournament_participant.golfer.golfer_id in team.team_member_list %}hidden{% endif %}" style="margin-bottom:5px;" id="add_golfer_row_{{ tournament_participant.golfer.golfer_id }}">
+				<div class="col-xs-10 col-sm-4">
+					<button type="button" id="add_golfer_{{ tournament_participant.golfer.golfer_id }}" class="btn btn-default btn-lg btn-block" onclick="btnGolferSelect_click('{{ tournament_participant.golfer.golfer_id }}')" style="padding:5px 5px; text-align:left; font-size:14px;">
+						<span class="glyphicon glyphicon-plus-sign" style="width:16px;" id="{{ tournament_participant.golfer.golfer_id }}"></span>
+						&nbsp;&nbsp;
+						{{ tournament_participant.golfer.golfer_lname }}, {{ tournament_participant.golfer.golfer_fname }}
+					</button>
+				</div>
+				<div class="col-xs-2 col-sm-8" style="padding-top:5px;">
+					{{ tournament_participant.salary }}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>

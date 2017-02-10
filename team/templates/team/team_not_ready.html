@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Select Team
+				{% include "team/team_week_navigate.html" with tournament=tournament tournament_count=tournament_count %}
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 ">
+			<div class="panel panel-default">
+				<div class="panel-body bg-warning">
+					<span>
+						This tournament is not ready.  Please check back later to pick your team.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

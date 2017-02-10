@@ -1,0 +1,80 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Picks Breakdown{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Picks Breakdown
+				{% include "league/tournament_week_navigate.html" with tournament=view.tournament tournament_count=view.tournament_count %}
+			</h3>
+		</div>
+	</div>
+
+	{% if view.tournament.tournament_locked %}
+
+		<table class="table table-condensed table-striped" id="breakdown_table">
+			<thead>
+				<tr>
+					<th class="col-xs-6 col-sm-4 col-md-3 golfer_column_heading">
+						Golfer
+					</th>
+					<th class="col-xs-2 col-sm-1 golfer_column_heading">
+						Pkd
+					</th>
+					<th class="col-xs-2 col-sm-1 golfer_column_heading">
+						Sts
+					</th>
+					<th class="col-xs-2 col-sm-6 col-md-7 golfer_column_heading">
+						Pts
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for golfer in view.breakdown %}
+					<tr>
+						<td class="col-xs-6 col-sm-4 col-md-3 {% if golfer.golfer_id in view.current_user_team %}orange{% endif %}">
+							<span class="visible-xs">
+								{{ golfer.golfer_lname }}, {{ golfer.golfer_fname_initial }}
+							</span>
+							<span class="hidden-xs">
+								{{ golfer.golfer_lname }}, {{ golfer.golfer_fname }}
+							</span>
+						</td>
+						<td class="col-xs-2 col-sm-1">
+							{{ golfer.times_picked }}
+						</td>
+						<td class="col-xs-2 col-sm-1">
+							{{ golfer.status_converted }}
+						</td>
+						<td class="col-xs-2 col-sm-6 col-md-7">
+							{{ golfer.winnings }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% else %}
+
+		<div class="row">
+			<div class="col-xs-12 ">
+				<div class="panel panel-default">
+					<div class="panel-body bg-warning">
+						<span>
+							The picks breakdown will be available after the tournament has started.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+</div>
+
+{% endblock %}

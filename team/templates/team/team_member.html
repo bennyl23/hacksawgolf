@@ -1,0 +1,21 @@
+<div class="row selected_golfer_row" id="selected_golfer_row_{{ counter }}">
+	<input type="hidden" name="selected_golfer_id_{{ counter }}" id="selected_golfer_id_{{ counter }}" value="{{ team_member.golfer_id }}" autocomplete="off" />
+	<input type="hidden" name="selected_golfer_salary_{{ counter }}" id="selected_golfer_salary_{{ counter }}" value="{{ team_member.salary }}" autocomplete="off" />
+
+	<div class="col-xs-3 col-sm-2 col-md-1">
+		<button type="button" id="remove_golfer_{{ counter }}" class="btn btn-default btn-lg btn-block" style="padding:5px 5px; text-align:center; font-size:14px;" onclick="btnGolferRemove_click('{{ counter }}')">
+			<span class="glyphicon glyphicon-minus-sign" style="width:16px;"></span>
+		</button>
+	</div>
+	<div class="col-xs-7 col-sm-4 col-md-3 selected_golfer_column">
+		<span class="visible-xs" id="selected_golfer_name_short_{{ counter }}">
+			{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
+		</span>
+		<span class="hidden-xs" id="selected_golfer_name_long_{{ counter }}">
+			{{ team_member.golfer_lname }}, {{ team_member.golfer_fname }}
+		</span>
+	</div>
+	<div class="col-xs-1 col-sm-1 selected_golfer_column" id="selected_golfer_salary_{{ counter }}">
+		{{ team_member.salary }}
+	</div>
+</div>

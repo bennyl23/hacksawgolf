@@ -1,0 +1,178 @@
+/* global styles */
+#site_body {
+	padding-top: 75px;
+}
+.page_heading_container {
+	margin-bottom:10px;
+}
+.page_heading {
+	color: #92cf3e;
+	margin-top: 0px;
+}
+.page_heading small {
+	color: #009d78;
+}
+.bold {
+	font-weight: bold;
+}
+a.anchor_green:active, a.anchor_green:link, a.anchor_green:visited {
+	color: #015401;
+}
+a.anchor_green:hover {
+	color: #015401;
+	text-decoration: underline;
+}
+a.anchor_orange:active, a.anchor_orange:link, a.anchor_orange:visited {
+	color: #f1912b;
+}
+a.anchor_orange:hover {
+	color: #f1912b;
+	text-decoration: underline;
+}
+.row_odd {
+	background-color: #F7FAF2;
+}
+tr.row_odd:hover {
+	background-color: #E1E8D5;
+}
+.row_even {
+	background-color: #FFFFFF;
+}
+tr.row_even:hover {
+	background-color: #EDEDED;
+}
+.golfer_column_heading {
+	font-size: 10px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #F7FAF2;
+}
+.hiddenRow {
+	padding: 0 !important;
+}
+.detail_label {
+	font-weight: bold;
+}
+
+/* fonts */
+.ubuntu {
+	font-family: 'Ubuntu', Arial, sans-serif;
+}
+.wendy_one {
+	font-family: 'Wendy One', Arial, sans-serif;
+}
+
+/* colors */
+.medium_grey {
+	color: #373738 !important;;
+}
+.dark_green {
+	color: #015401 !important;
+}
+.medium_green {
+	color: #009d78 !important;;
+}
+.orange {
+	color: #f1912b !important;
+}
+/* end global styles */
+
+
+/* navbar styles */
+#hacksaw_nav {
+	background-color: #FFFFFF;
+	padding-top: 10px;
+}
+#hacksaw-navbar ul li a:focus, #hacksaw-navbar ul li a:hover {
+	color: #f1912b !important;
+}
+#hacksaw-navbar ul li a.active {
+	color: #f1912b !important;
+}
+#hacksaw_nav_title {
+	padding: 0 0 0 14px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.navbar-nav .open a {
+	background-color: #ffffff !important;
+}
+/* end navbar styles */
+
+/* login/register styles */
+.login_brand_container {
+	margin: 10px 0px;
+}
+.login_brand {
+	font-size: 24px;
+	display: inline-block;
+	margin-right: 3px;
+}
+.login_heading {
+	font-size: 16px;
+	color: #92cf3e;
+}
+#forgot_password_container{
+	margin-bottom: 20px;
+	font-size: 11px;
+}
+/* end login/register styles */
+
+/* my team styles */
+#my_team_selection_container {
+	top: 61px;
+	min-height: 41px;
+	margin: 0;
+	background-color: #FFFFFF;
+	border: 0 none;
+	z-index: 1000;
+}
+
+.selected_golfer_row {
+	padding: 5px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.selected_golfer_column {
+	padding-top: 5px;
+}
+
+#selected_golfer_form_container {
+	margin-bottom: 8px;
+}
+/* end my team styles */
+
+/* verify team styles */
+#verify_team_totals {
+	margin-top:5px;
+	padding-top:5px;
+	border-top:1px solid #009d78;
+	font-weight:bold;
+	font-size:14px;
+}
+/* end verify team styles */
+
+/* scores styles */
+.team_heading {
+	font-weight: bold;
+	color: #015401;
+}
+
+.my_team_heading {
+	font-weight: bold;
+	color: #f1912b;
+}
+
+.team_stat_label {
+	font-size: 11px;
+	color: #919499;
+}
+/* end scores styles */
+
+/* standings styles */
+#standings_table th, #standings_detail_table th, #breakdown_table th {
+	cursor: pointer;
+}
+/* end standings styles */

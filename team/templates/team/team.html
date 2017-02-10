@@ -1,0 +1,24 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | My Team{% endblock %}
+
+{% block content %}
+
+<!-- tournament has started and picks are locked:  view team -->
+{% if view.tournament.tournament_locked %}
+
+	{% include "team/team_view.html" with team=view.team tournament=view.tournament tournament_count=view.tournament_count %}
+
+<!-- tournament has not started and picks are open:  select team -->
+{% elif not view.tournament.tournament_locked and view.tournament.ready_for_picks %}
+
+	{% include "team/team_select.html" with team=view.team tournament=view.tournament tournament_participants=view.tournament_participants tournament_count=view.tournament_count %}
+
+<!-- tournament has not started and picks are not ready:  view info message -->
+{% else %}
+
+	{% include "team/team_not_ready.html" with tournament=view.tournament tournament_count=view.tournament_count %}
+
+{% endif %}
+
+{% endblock %}

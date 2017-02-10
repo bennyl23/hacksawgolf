@@ -1,0 +1,72 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Standings{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Standings
+			</h3>
+		</div>
+	</div>
+
+	{% if view.standings.all %}
+
+		<table class="table table-condensed table-striped" id="standings_table">
+			<thead>
+				<tr>
+					<th class="col-xs-1 col-sm-1 golfer_column_heading">
+						Rank
+					</th>
+					<th class="col-xs-7 col-sm-3 golfer_column_heading">
+						Team
+					</th>
+					<th class="col-xs-3 col-sm-2 golfer_column_heading">
+						Pts
+					</th>
+					<th class="col-xs-1 col-sm-6 golfer_column_heading">
+						Wins
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for team in view.standings %}
+					<tr>
+						<td class="col-xs-1 col-sm-1">
+							{{ forloop.counter }}
+						</td>
+						<td class="col-xs-7 col-sm-3">
+							<a class="{% if team.user_id == view.current_user_id %}anchor_orange{% else %}anchor_green{% endif %}" href="{% url 'league:standings_detail' user_id=team.user_id %}">{{ team.user_team_name }}</a>
+						</td>
+						<td class="col-xs-3 col-sm-2">
+							{{ team.tot_winnings }}
+						</td>
+						<td class="col-xs-1 col-sm-6">
+							{{ team.user_wins }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% else %}
+
+		<div class="row">
+			<div class="col-xs-12 ">
+				<div class="panel panel-default">
+					<div class="panel-body bg-warning">
+						<span>
+							There are no standings to show yet.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+{% endblock %}

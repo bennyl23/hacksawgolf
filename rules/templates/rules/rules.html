@@ -1,0 +1,21 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Rules{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Hacksaw Rules
+			</h3>
+		</div>
+	</div>
+	<div class="row" style="margin-top:10px;">
+		<div class="col-xs-12">
+			{% autoescape off %}{{ view.rule.rule_text }}{% endautoescape %}
+		</div>
+	</div>
+</div>
+{% endblock %}

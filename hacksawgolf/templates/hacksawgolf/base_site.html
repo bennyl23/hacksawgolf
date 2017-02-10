@@ -1,0 +1,84 @@
+{% extends "hacksawgolf/base.html" %}
+
+{% block base_content %}
+
+	<div id="site_body">
+
+		<nav class="navbar navbar-default navbar-fixed-top" id="hacksaw_nav" role="navigation">
+
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#hacksaw-navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand wendy_one medium_green" id="hacksawgolf_brand" href="{% url 'home:home' %}">
+						Hacksaw Golf
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="hacksaw-navbar">
+					<ul class="nav navbar-nav">
+						<li role="presentation">
+							<a href="{% url 'home:home' %}" class="ubuntu dark_green {% if request.path == '/' or '/home/' in request.path %}active{% endif %}">Home</a>
+						</li>
+						<li role="presentation">
+							<a href="{% url 'team:team' %}" class="ubuntu dark_green {% if '/team/' in request.path %}active{% endif %}">My Team</a>
+						</li>
+						<li role="presentation">
+							<a href="{% url 'tournament:tournament_scores' %}" class="ubuntu dark_green {% if '/scores/' in request.path %}active{% endif %}">Scores</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle ubuntu dark_green {% if '/league/' in request.path %}active{% endif %}" data-toggle="dropdown">League <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url 'league:breakdown' %}" class="ubuntu dark_green">Picks Breakdown</a></li>
+								<li><a href="{% url 'league:standings' %}" class="ubuntu dark_green">Standings</a></li>
+								<li><a href="{% url 'league:tournament_list' %}" class="ubuntu dark_green">Tournament List</a></li>
+							</ul>
+						</li>
+						<li role="presentation">
+							<a href="{% url 'rules:rules' %}" class="ubuntu dark_green {% if '/rules/' in request.path %}active{% endif %}">Rules</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="glyphicon glyphicon-user"></span>
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="mailto:ronendo@comcast.net">Contact</a></li>
+								<li><a href="{% url 'login:logout' %}">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</nav>
+
+		{% block content %}
+		{% endblock %}
+
+		<!-- modal that shows informational messages -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="info_modal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-info" id="info_modal_text"></div>
+		    	</div>
+		  	</div>
+		</div>
+
+		<!-- modal that shows error messages -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="error_modal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-danger" id="error_modal_text"></div>
+		    	</div>
+		  	</div>
+		</div>
+
+	</div>
+
+{% endblock %}

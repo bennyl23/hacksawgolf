@@ -1,0 +1,70 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Standings Detail{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Standings Detail
+				&nbsp;
+				<a class="btn btn-default btn-sm" href="{% url 'league:standings' %}" role="button">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				</a>
+				<br />
+				<span>
+					<small>{{ view.user.user_team_name }}</small>
+				</span>
+			</h3>
+		</div>
+	</div>
+
+	{% if view.standings_detail.all %}
+
+		<table class="table table-condensed table-striped" id="standings_detail_table">
+			<thead>
+				<tr>
+					<th class="col-xs-10 col-sm-4 golfer_column_heading">
+						Tournament
+					</th>
+					<th class="col-xs-2 col-sm-8 golfer_column_heading">
+						Points
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for tournament in view.standings_detail %}
+					<tr>
+						<td class="col-xs-10 col-sm-4">
+							{{ tournament.tournament_name }}
+						</td>
+						<td class="col-xs-2 col-sm-8">
+							{{ tournament.tot_winnings }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% else %}
+
+		<div class="row">
+			<div class="col-xs-12 ">
+				<div class="panel panel-default">
+					<div class="panel-body bg-warning">
+						<span>
+							There are no results to show yet.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+</div>
+
+{% endblock %}

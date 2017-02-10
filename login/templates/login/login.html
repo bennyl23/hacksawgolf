@@ -1,0 +1,65 @@
+{% extends "hacksawgolf/base_login.html" %}
+
+{% block title %}Hacksaw Golf | Login{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div class="login_brand_container">
+				<span class="wendy_one medium_green login_brand">
+					Hacksaw Golf
+				</span>
+				<span class="login_heading">Login</span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+			{% for error in form.non_field_errors %}
+				<div class="alert alert-danger page_error" style="margin-top: 10px;">
+					{{ error }}
+				</div>
+			{% endfor %}
+
+			<form action="{% url 'login:login' %}" method="post" class="form-horizantal">{% csrf_token %}
+
+				{% for field in form %}
+
+					<div class="form-group {% if field.errors %}has-error{% endif %}">
+						{{ field.label_tag }}
+						{{ field }}
+
+						{% for error in field.errors %}
+							<ul class="text-danger" style="padding-left:0px">{{ error }}</ul>
+						{% endfor %}
+					</div>
+					{% if field.html_name == 'user_password' %}
+						<div id="forgot_password_container">
+							<a href="{% url 'login:forgot_password' %}">Forgot Password?</a>
+							<a href="mailto:{{ view.get_admin_email }}" style="display:inline-block;float:right;">
+								Contact Us
+								&nbsp;
+								<span class="glyphicon glyphicon-envelope"></span>
+							</a>
+						</div>
+					{% endif %}
+
+				{% endfor %}
+
+				<button class="btn btn-lg btn-default btn-block" type="submit">Sign in</button>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div class="well" style="margin-top: 20px;">
+				New user?  <a href="{% url 'register:register' %}">Register here</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Scores{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Scores
+				{% include "tournament/tournament_week_navigate.html" with tournament=view.tournament tournament_count=view.tournament_count %}
+			</h3>
+		</div>
+	</div>
+
+	{% if view.tournament.tournament_locked %}
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div style="background-color:#EDEDED; padding:10px 5px; margin-bottom:10px;">
+					<span style="color:#8A8888; font-weight:bold;">In contention score:</span>
+					&nbsp;
+					<span style="font-weight:bold; font-size:16px;" class="orange">{{ view.tournament.in_contention_converted }}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+
+				{% for team_score in view.tournament_scores %}
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-bottom:2px;border-color:#FFFFFF;">
+						<div class="panel panel-default">
+							<button id="team_score_button_{{ team_score.user_id }}" class="btn btn-default btn-sm btn-block" style="font-size:12px; text-align:left;" type="button" data-toggle="collapse" data-target="#team_score_content_{{ team_score.user_id }}" aria-expanded="false" aria-controls="team_score_content_{{ team_score.user_id }}">
+								<div class="row">
+									<div class="col-xs-12 {% if team_score.user_id == view.current_user_id %}my_team_heading{% else %}team_heading{% endif %}">
+										{{ team_score.user_team_name }}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-3 col-sm-2 col-md-1">
+										<span class="team_stat_label">Md Ct:</span>
+										&nbsp;
+										{% if team_score.mtc_count < 5 %}
+											{{ team_score.mtc_count }}
+										{% else %}
+											<span class="label {% if team_score.mtc_count == 5 %}label-primary{% elif team_score.mtc_count == 6 %}label-danger{% endif %} label-pill">
+												{{ team_score.mtc_count }}
+											</span>
+										{% endif %}
+									</div>
+									<div class="col-xs-3 col-sm-2 col-md-1">
+										<span class="team_stat_label">Bns:</span>
+										&nbsp;
+										{{ team_score.user_bonus }}
+									</div>
+									<div class="col-xs-3 col-sm-2 col-md-1">
+										<span class="team_stat_label">Pts:</span>
+										&nbsp;
+										{{ team_score.tot_winnings }}
+									</div>
+									<div class="hidden-xs col-sm-2 col-md-1">
+										<span class="team_stat_label">Tot Pts:</span>
+										&nbsp;
+										{{ team_score.tot_winnings_for_year }}
+									</div>
+								</div>
+							</button>
+
+							<div id="team_score_content_{{ team_score.user_id }}" data-user-id="{{ team_score.user_id }}" class="panel-collapse collapse {% if team_score.user_id == view.current_user_id %}in{% endif %}" role="tabpanel" aria-labelledby="team_score_button_{{ team_score.user_id }}">
+								<div class="panel-body" id="team_score_list_{{ team_score.user_id }}" style="padding:10px 3px;">
+									<!-- check if user_id in loop is the logged in user, if so, show their team so user does not have to click on it -->
+									{% if team_score.user_id == view.current_user_id %}
+										{% include "tournament/user_team_for_tournament.html" with team_members=view.team_for_tournament_for_current_user %}
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</div>
+		</div>
+
+	{% else %}
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body bg-warning">
+						<span>
+							Scores will be available after the tournament has started.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endif %}
+
+</div>
+
+{% endblock %}
