@@ -24,7 +24,6 @@ DEBUG = False
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INTERNAL_IPS = ['127.0.0.1']
 
-
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = [
@@ -106,6 +105,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/hacksawgolf/static/'
