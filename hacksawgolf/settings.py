@@ -83,8 +83,8 @@ with open('/projects/hacksawgolf/security/variables/mysql_pw.txt') as mysql_pw_f
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hacksawgolf',
-        'USER': 'root',
+        'NAME': 'hacksa5_hacksawgolf',
+        'USER': 'hacksa5_webuser',
         'PASSWORD': MYSQL_PW,
         'HOST': '127.0.0.1'
     }
