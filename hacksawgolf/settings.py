@@ -130,8 +130,8 @@ EMAIL_HOST_PASSWORD = EMAIL_PW
 EMAIL_PORT = 26
 
 # tinymce settings
-TINYMCE_JS_URL = os.path.join(STATIC_URL, "admin/js/tinymce/tinymce.min.js")
-TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "admin/js/tinymce/")
+TINYMCE_JS_URL = os.path.join(STATIC_ROOT, "admin/js/tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "admin/js/tinymce/")
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "modern"
 }
