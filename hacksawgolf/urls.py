@@ -6,7 +6,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    (r'^tinymce/', include('tinymce.urls')),
     url(r'^$', include('home.urls', namespace='home')),
     url(r'^login/', include('login.urls', namespace='login')),
     url(r'^register/', include('register.urls', namespace='register')),
@@ -15,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^team/', include('team.urls', namespace='team')),
     url(r'^league/', include('league.urls', namespace='league')),
     url(r'^rules/', include('rules.urls', namespace='rules')),
+    (r'^tinymce/', include('tinymce.urls')),
 )
 
 if settings.DEBUG:
