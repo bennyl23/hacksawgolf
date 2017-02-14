@@ -35,8 +35,7 @@ class TournamentParticipantAdmin(admin.ModelAdmin):
     }
     class Media:
         js = {
-              #'/static/tournament/admin/tournament_participant_admin.js'
-              'tournament/static/tournament/admin/tournament_participant_admin.js'
+              '/static/tournament/admin/tournament_participant_admin.js'
         }
 
     def get_golfer_lname(self, obj):
