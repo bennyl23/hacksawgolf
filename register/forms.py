@@ -58,7 +58,7 @@ class RegisterForm(forms.ModelForm):
     # Model form classes will create inputs for all model fields not implicitly declared unless told otherwise
     class Meta:
         model = User
-        exclude = ['user_af1', 'user_af2', 'user_real_name', 'user_paid', 'message_from_commish']
+        exclude = ['user_af1', 'user_af2', 'user_real_name', 'user_paid', 'message_from_commish', 'user_reset_password']
 
     # override the form's clean method to validate the registration information against the db
     def clean(self):
