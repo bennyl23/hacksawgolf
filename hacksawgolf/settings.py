@@ -106,7 +106,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/hacksawgolf/static/'
+STATIC_ROOT = '/projects/hacksawgolf/hacksawgolf/hacksawgolf/'
 
 # Static files paths
 STATICFILES_DIRS = (
@@ -124,10 +124,10 @@ with open('/projects/hacksawgolf/security/variables/email_pw.txt') as email_pw_f
 
 # email settings
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'mail.hacksawgolf.com'
+EMAIL_HOST = 'vps26224.inmotionhosting.com'
 EMAIL_HOST_USER = 'ben@hacksawgolf.com'
 EMAIL_HOST_PASSWORD = EMAIL_PW
-EMAIL_PORT = 26
+EMAIL_PORT = 465
 
 # tinymce settings
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "admin/js/tinymce/tinymce.min.js")
