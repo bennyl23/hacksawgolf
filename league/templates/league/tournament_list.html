@@ -53,7 +53,7 @@
 				        		</tr>
 				        		<tr>
 				        			<td class="col-xs-5 col-sm-2 detail_label">1st place:</td>
-				        			<td class="col-xs-7 col-sm-10 dark_green bold">{{ tournament.tournament_winner.user_team_name }}</td>
+				        			<td class="col-xs-7 col-sm-10 dark_green bold">{{ tournament.tournament_winner.user_team_name|default:"TBD" }}</td>
 				        		</tr>
 				        		<tr>
 				        			<td class="col-xs-5 col-sm-2 detail_label">1st winnings:</td>

@@ -1,7 +1,12 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, include, url, handler400, handler404, handler500
 from django.conf import settings
 
 from django.contrib import admin
+
+handler400 = 'hacksawgolf.views.bad_request'
+handler404 = 'hacksawgolf.views.page_not_found'
+handler500 = 'hacksawgolf.views.server_error'
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
