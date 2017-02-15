@@ -3,10 +3,86 @@
 {% block title %}Hacksaw Golf | Home{% endblock %}
 
 {% block content %}
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">{{ view.current_tournament.tournament_name }}</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				{{ view.user.user_team_name }}
+				{% include "home/team_week_navigate.html" with tournament=view.tournament tournament_count=view.tournament_count %}
+			</h3>
 		</div>
 	</div>
+
+	{% if view.tournament.tournament_locked %}
+
+		<!-- tournament locked and team selected -->
+		{% if view.team.team_members.all %}
+
+			{% include "home/team_list_view.html" with team=view.team %}
+
+		<!-- tournament locked and no team selected -->
+		{% else %}
+
+			<div class="row">
+				<div class="col-xs-12 ">
+					<div class="panel panel-default">
+						<div class="panel-body bg-warning">
+							<span>
+								Unfortunately you did not select a team for this tournmanent.  This tournament has started and has been locked.
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% endif %}
+
+	{% else %}
+
+		{% if view.tournament.ready_for_picks %}
+
+			<!-- tournament not locked, tournament ready for picks, and team already selected -->
+			{% if view.team.team_members.all %}
+
+				{% include "home/team_list_view.html" with team=view.team %}
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<a class="btn btn-lg btn-default btn-block" href="{% url 'team:team' %}" role="button">Edit team</a>
+					</div>
+				</div>
+
+			<!-- tournament not locked, tournament ready for picks, and team not selected -->
+			{% else %}
+
+				<div class="row" style="margin-top:10px;">
+					<div class="col-xs-12 col-sm-6">
+						<a class="btn btn-lg btn-default btn-block" href="{% url 'team:team' %}" role="button">Select your team</a>
+					</div>
+				</div>
+
+			{% endif %}
+
+		<!-- tournament not locked and not ready for picks -->
+		{% else %}
+
+			<div class="row">
+				<div class="col-xs-12 ">
+					<div class="panel panel-default">
+						<div class="panel-body bg-warning">
+							<span>
+								This tournament is not ready. Please check back later to pick your team.
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		{% endif %}
+
+	{% endif %}
+
+</div>
 
 {% endblock %}
