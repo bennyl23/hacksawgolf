@@ -124,10 +124,10 @@ with open('/projects/hacksawgolf/security/variables/email_pw.txt') as email_pw_f
 
 # email settings
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'vps26224.inmotionhosting.com'
+EMAIL_HOST = 'mail.hacksawgolf.com'
 EMAIL_HOST_USER = 'ben@hacksawgolf.com'
 EMAIL_HOST_PASSWORD = EMAIL_PW
-EMAIL_PORT = 465
+EMAIL_PORT = 25
 
 # tinymce settings
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "admin/js/tinymce/tinymce.min.js")
