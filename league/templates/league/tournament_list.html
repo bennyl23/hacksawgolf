@@ -40,6 +40,10 @@
 				        <div class="accordion-body collapse" id="tournament{{ tournament.tournament_id }}">
 				        	<table class="table table-condensed" style="font-size:12px;">
 				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">Type:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_type.tournament_type }}</td>
+				        		</tr>
+				        		<tr>
 				        			<td class="col-xs-5 col-sm-2 detail_label">Start:</td>
 				        			<td class="col-xs-7 col-sm-10">{{ tournament.picks_lock_date|date:"F j" }}</td>
 				        		</tr>
