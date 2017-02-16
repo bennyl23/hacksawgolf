@@ -11,7 +11,7 @@ sys.path.append('/projects/hacksawgolf/hacksawgolf/hacksawgolf')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'hacksawgolf.settings'
 
-os.environ['HTTPS'] = "off"
+os.environ['HTTPS'] = "on"
 
 # Activate your virtual env
 activate_env=os.path.expanduser("/virtualenvs/hacksawgolf/bin/activate_this.py")
