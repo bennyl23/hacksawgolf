@@ -1,7 +1,5 @@
 {% extends "hacksawgolf/base_site.html" %}
 
-{% load tz %}
-
 {% block title %}Hacksaw Golf | Home{% endblock %}
 
 {% block content %}
@@ -88,10 +86,6 @@
 	<!-- blog -->
 	{% for entry in view.blog %}
 
-
-
-		{% localtime on %}
-
 		<div class="row">
 			<div class="col-xs-12">
 				<span class="blog_subject">{{ entry.entry_subject }}</span>
@@ -113,8 +107,6 @@
 				<hr />
 			</div>
 		</div>
-
-		{% endlocaltime %}
 
 	{% endfor %}
 
