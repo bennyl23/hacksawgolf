@@ -83,6 +83,33 @@
 
 	{% endif %}
 
+	<!-- blog -->
+	{% for entry in view.blog %}
+
+		<div class="row">
+			<div class="col-xs-12">
+				<span class="blog_subject">{{ entry.entry_subject }}</span>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom:10px;">
+			<div class="col-xs-12">
+				<span class="blog_date">Posted on {{ entry.entry_date }}</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				{% autoescape off %}{{ entry.entry_body }}{% endautoescape %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<hr />
+			</div>
+		</div>
+
+	{% endfor %}
+
 </div>
 
 {% endblock %}

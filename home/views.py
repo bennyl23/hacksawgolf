@@ -3,6 +3,7 @@ from tournament.models import Tournament
 from register.models import User
 from team.models import TeamMember
 from django.db.models import Sum
+from home.models import Blog
 
 
 class HomeView(TemplateView):
@@ -46,3 +47,6 @@ class HomeView(TemplateView):
         response['salary_total'] = salary_total
 
         return response
+
+    def blog(self):
+        return Blog.objects.all().order_by('-entry_date')

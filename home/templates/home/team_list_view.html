@@ -1,4 +1,4 @@
-<table class="table table-condensed">
+<table class="table table-condensed table-striped">
 	<thead>
 		<tr>
 			<th class="col-xs-6 col-sm-4 col-md-3 golfer_column_heading">
@@ -19,7 +19,7 @@
 
 	<tbody>
 		{% for team_member in team.team_members %}
-			<tr class="{% cycle 'row_odd' 'row_even' %}">
+			<tr>
 				<td class="col-xs-6 col-sm-4 col-md-3">
 					<span class="visible-xs">
 						{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
