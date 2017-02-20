@@ -37,7 +37,7 @@
 
 							</div>
 							<!-- Only enable continue button if 6 golfers selected --->
-							<button class="btn btn-lg btn-default btn-block {% if team.team_members|length == 0 %}hidden disabled{% elif team.team_members|length < 6 %}disabled{% endif %}" {% if team.team_members|length < 6 %}disabled="disabled"{% endif %} id="continue_onto_confirmation_button" type="button" onclick="btnContinueOntoConfirm_click()">Continue</button>
+							<button class="btn btn-lg btn-primary btn-block {% if team.team_members|length == 0 %}hidden disabled{% elif team.team_members|length < 6 %}disabled{% endif %}" {% if team.team_members|length < 6 %}disabled="disabled"{% endif %} id="continue_onto_confirmation_button" type="button" onclick="btnContinueOntoConfirm_click()">Continue</button>
 						</form>
 
 					</div>
