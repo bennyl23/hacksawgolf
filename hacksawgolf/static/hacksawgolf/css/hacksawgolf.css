@@ -55,6 +55,11 @@ tr.row_even:hover {
 .detail_label {
 	font-weight: bold;
 }
+.badge-outline {
+    color: #006a51 !important;
+    border: 1px solid #999;
+    background-color: #FFFFFF !important;
+}
 
 /* fonts */
 .ubuntu {
@@ -141,6 +146,10 @@ tr.row_even:hover {
 
 #selected_golfer_form_container {
 	margin-bottom: 8px;
+}
+
+.team_selection_panel_heading:hover {
+	background-color: #006a51 !important;
 }
 /* end my team styles */
 

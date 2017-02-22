@@ -3,15 +3,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="panel panel-default col-xs-12" style="padding:0; margin:0;">
-				<div class="panel-heading" data-toggle="collapse" data-target="#my_team_selections" style="cursor:pointer;">
+				<div class="panel-heading team_selection_panel_heading" data-toggle="collapse" data-target="#my_team_selections" style="background-color:#009d78; color:#FFFFFF; cursor:pointer;">
 					Total Salary:&nbsp;
-					<span class="badge" id="salary_total">{{ team.salary_total.salary__sum|default_if_none:"0" }}</span>
+					<span class="badge badge-outline" id="salary_total">{{ team.salary_total.salary__sum|default_if_none:"0" }}</span>
 					&nbsp;for&nbsp;
-					<span class="badge" id="num_golfers_selected">{{ team.team_members|length }}</span>
+					<span class="badge badge-outline" id="num_golfers_selected">{{ team.team_members|length }}</span>
 					&nbsp;golfer(s)
 					<div class="pull-right">
 						<a href="#">
-							<span id="my_team_selections_chevron" class="glyphicon glyphicon-chevron-down"></span>
+							<span id="my_team_selections_chevron" class="glyphicon glyphicon-chevron-down" style="color:#FFFFFF;"></span>
 						</a>
 					</div>
 				</div>
