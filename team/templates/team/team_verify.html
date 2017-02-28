@@ -8,7 +8,7 @@
 
 	<input type="hidden" name="tournament_id" id="tournament_id" value="{{ tournament.tournament_id }}" />
 
-	<div class="container page_heading_container">
+	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<h3 class="page_heading">
@@ -19,24 +19,43 @@
 			</div>
 		</div>
 
-		<div class="row" style="margin-bottom:5px;">
-			<div class="col-xs-8 col-sm-5 col-md-4 golfer_column_heading">Golfer</div>
-			<div class="col-xs-4 golfer_column_heading">Salary</div>
-		</div>
-		{% for selected_golfer in selected_golfers %}
-			<div class="row golfer_list_row {% cycle 'row_odd' 'row_even' %}">
-				<div class="col-xs-8 col-sm-5 col-md-4">
-					{{ selected_golfer.golfer.golfer_lname }}, {{ selected_golfer.golfer.golfer_fname }}
-				</div>
-				<div class="col-xs-4">
-					{{ selected_golfer.salary }}
-				</div>
-			</div>
-		{% endfor %}
-		<div class="row" id="verify_team_totals">
-			<div class="col-xs-8 col-sm-5 col-md-4">Total:</div>
-			<div class="col-xs-4">{{ salary_total.salary__sum }}</div>
-		</div>
+		<table class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th class="col-xs-9 col-sm-4 col-md-3 golfer_column_heading">
+						Golfer
+					</th>
+					<th class="col-xs-2 col-sm-1 golfer_column_heading">
+						Salary
+					</th>
+					<th class="col-xs-1 col-sm-7 col-md-8">&nbsp;</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for selected_golfer in selected_golfers %}
+					<tr>
+						<td class="col-xs-9 col-sm-4 col-md-3">
+							{{ selected_golfer.golfer.golfer_lname }}, {{ selected_golfer.golfer.golfer_fname }}
+						</td>
+						<td class="col-xs-2 col-sm-1" >
+							{{ selected_golfer.salary }}
+						</td>
+						<td class="col-xs-1 col-sm-7 col-md-8">&nbsp;</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td class="col-xs-9 col-sm-4 col-md-3">
+						Total:
+					</td>
+					<td class="col-xs-2 col-sm-1" >
+						{{ salary_total.salary__sum }}
+					</td>
+					<td class="col-xs-1 col-sm-7 col-md-8">&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div class="row" style="margin-top:15px;">
 			<div class="col-xs-7 col-md-4">
 				<button class="btn btn-lg btn-primary btn-block" id="submit_team_button" type="button" onclick="btnSubmitTeam_click()">Submit team</button>

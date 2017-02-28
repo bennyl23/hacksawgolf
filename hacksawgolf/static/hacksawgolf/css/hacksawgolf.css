@@ -2,9 +2,6 @@
 #site_body {
 	padding-top: 75px;
 }
-.page_heading_container {
-	margin-bottom:10px;
-}
 .page_heading {
 	color: #92cf3e;
 	margin-top: 0px;
@@ -160,6 +157,9 @@ tr.row_even:hover {
 	border-top:1px solid #009d78;
 	font-weight:bold;
 	font-size:14px;
+}
+.golfer_list_row {
+	padding: 5px 0;
 }
 /* end verify team styles */
 

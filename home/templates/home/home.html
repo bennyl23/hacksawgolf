@@ -19,7 +19,7 @@
 		<!-- tournament locked and team selected -->
 		{% if view.team.team_members.all %}
 
-			{% include "home/team_list_view.html" with team=view.team %}
+			{% include "home/team_list_view.html" with team=view.team tournament=view.tournament %}
 
 		<!-- tournament locked and no team selected -->
 		{% else %}
@@ -45,7 +45,7 @@
 			<!-- tournament not locked, tournament ready for picks, and team already selected -->
 			{% if view.team.team_members.all %}
 
-				{% include "home/team_list_view.html" with team=view.team %}
+				{% include "home/team_list_view.html" with team=view.team tournament=view.tournament %}
 
 				<div class="row" style="margin:10px 0;">
 					<div class="col-xs-12 col-sm-6">

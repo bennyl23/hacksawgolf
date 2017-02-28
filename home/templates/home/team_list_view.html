@@ -10,9 +10,11 @@
 			<th class="col-xs-2 col-sm-1 golfer_column_heading">
 				Sts
 			</th>
-			<th class="col-xs-2 col-sm-1 golfer_column_heading">
-				Pts
-			</th>
+			{% if tournament.tournament_locked %}
+				<th class="col-xs-2 col-sm-1 golfer_column_heading">
+					Pkd
+				</th>
+			{% endif %}
 			<th class="col-sm-5 col-md-6">&nbsp;</th>
 		</tr>
 	</thead>
@@ -34,9 +36,11 @@
 				<td class="col-xs-2 col-sm-1" >
 					{{ team_member.status_converted }}
 				</td>
-				<td class="col-xs-2 col-sm-1" >
-					{{ team_member.winnings }}
-				</td>
+				{% if tournament.tournament_locked %}
+					<td class="col-xs-2 col-sm-1" >
+						{{ team_member.times_picked }}
+					</td>
+				{% endif %}
 				<td class="col-sm-5 col-md-6">&nbsp;</td>
 			</tr>
 		{% endfor %}
