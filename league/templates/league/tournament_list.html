@@ -52,22 +52,22 @@
 					<td class="col-xs-11 col-lg-2">
 						{{ tournament.tournament_name }}
 					</td>
-					<td class="visible-lg col-lg-1 small_td_text">
+					<td class="visible-lg col-lg-1">
 						{{ tournament.tournament_type.tournament_type }}
 					</td>
-					<td class="visible-lg col-lg-1 small_td_text">
+					<td class="visible-lg col-lg-1">
 						{{ tournament.picks_lock_date|date:"F j" }}
 					</td>
-					<td class="visible-lg col-lg-1 small_td_text">
+					<td class="visible-lg col-lg-1">
 						{{ tournament.anyone }}
 					</td>
-					<td class="visible-lg col-lg-1 small_td_text">
+					<td class="visible-lg col-lg-1">
 						{{ tournament.multiwin }}
 					</td>
-					<td class="visible-lg col-lg-2 small_td_text">
+					<td class="visible-lg col-lg-2">
 						{{ tournament.tournament_winner.user_team_name|default:"TBD" }}
 					</td>
-					<td class="visible-lg col-lg-2 small_td_text">
+					<td class="visible-lg col-lg-2">
 						{{ tournament.tournament_second_place.user_team_name|default:"N/A" }}
 					</td>
 				</tr>
