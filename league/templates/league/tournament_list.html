@@ -19,8 +19,26 @@
 				<th class="col-xs-1 golfer_column_heading">
 					Week
 				</th>
-				<th class="col-xs-11 golfer_column_heading">
+				<th class="col-xs-11 col-lg-2 golfer_column_heading">
 					Tournament
+				</th>
+				<th class="visible-lg col-lg-1 golfer_column_heading">
+					Type
+				</th>
+				<th class="visible-lg col-lg-1 golfer_column_heading">
+					Start
+				</th>
+				<th class="visible-lg col-lg-1 golfer_column_heading">
+					Winner gets
+				</th>
+				<th class="visible-lg col-lg-1 golfer_column_heading">
+					Multiwin gets
+				</th>
+				<th class="visible-lg col-lg-2 golfer_column_heading">
+					1st place
+				</th>
+				<th class="visible-lg col-lg-2 golfer_column_heading">
+					2nd place
 				</th>
 			</tr>
 		</thead>
@@ -31,12 +49,30 @@
 					<td class="col-xs-1">
 						{{ tournament.tournament_week }}
 					</td>
-					<td class="col-xs-11">
+					<td class="col-xs-11 col-lg-2">
 						{{ tournament.tournament_name }}
+					</td>
+					<td class="visible-lg col-lg-1 small_td_text">
+						{{ tournament.tournament_type.tournament_type }}
+					</td>
+					<td class="visible-lg col-lg-1 small_td_text">
+						{{ tournament.picks_lock_date|date:"F j" }}
+					</td>
+					<td class="visible-lg col-lg-1 small_td_text">
+						{{ tournament.anyone }}
+					</td>
+					<td class="visible-lg col-lg-1 small_td_text">
+						{{ tournament.multiwin }}
+					</td>
+					<td class="visible-lg col-lg-2 small_td_text">
+						{{ tournament.tournament_winner.user_team_name|default:"TBD" }}
+					</td>
+					<td class="visible-lg col-lg-2 small_td_text">
+						{{ tournament.tournament_second_place.user_team_name|default:"N/A" }}
 					</td>
 				</tr>
 				<tr>
-				    <td colspan="2" class="hiddenRow">
+				    <td colspan="10" class="hiddenRow">
 				        <div class="accordion-body collapse" id="tournament{{ tournament.tournament_id }}">
 				        	<table class="table table-condensed" style="font-size:12px;">
 				        		<tr>
