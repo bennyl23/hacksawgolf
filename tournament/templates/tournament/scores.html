@@ -32,7 +32,7 @@
 				{% for team_score in view.tournament_scores %}
 					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-bottom:2px;border-color:#FFFFFF;">
 						<div class="panel panel-default">
-							<button id="team_score_button_{{ team_score.user_id }}" class="btn btn-default btn-sm btn-block" style="font-size:12px; text-align:left;" type="button" data-toggle="collapse" data-target="#team_score_content_{{ team_score.user_id }}" aria-expanded="false" aria-controls="team_score_content_{{ team_score.user_id }}">
+							<button id="team_score_button_{{ team_score.user_id }}" class="btn btn-default btn-sm btn-block" style="font-size:12px; text-align:left; outline:none;" type="button" data-toggle="collapse" data-target="#team_score_content_{{ team_score.user_id }}" aria-expanded="false" aria-controls="team_score_content_{{ team_score.user_id }}">
 								<div class="row">
 									<div class="col-xs-12 {% if team_score.user_id == view.current_user_id %}my_team_heading{% else %}team_heading{% endif %}">
 										{{ team_score.user_team_name }}
