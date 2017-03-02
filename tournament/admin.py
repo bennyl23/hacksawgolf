@@ -5,7 +5,7 @@ from django.forms import TextInput
 
 
 class TournamentAdmin(admin.ModelAdmin):
-    fields = ['tournament_name', 'tournament_location', 'tournament_abbrv', 'tournament_week', 'start_date', 'end_date', 'picks_lock_date', 'tournament_type', 'anyone', 'multiwin', 'in_contention', 'cut_point', 'ready_for_picks', 'tournament_winner', 'tournament_winnings', 'tournament_second_place', 'tournament_second_place_winnings']
+    fields = ['tournament_name', 'tournament_location', 'tournament_abbrv', 'tournament_week', 'start_date', 'end_date', 'picks_lock_date', 'tournament_type', 'anyone', 'tournament_second_place_winnings', 'multiwin', 'in_contention', 'cut_point', 'ready_for_picks', 'tournament_winner', 'tournament_winnings', 'tournament_second_place']
     list_display = ['tournament_name', 'start_date', 'end_date', 'picks_lock_date', 'ready_for_picks']
     list_editable = ['ready_for_picks']
     list_per_page = 1000

@@ -23,13 +23,13 @@
 					Tournament
 				</th>
 				<th class="visible-lg col-lg-1 golfer_column_heading">
-					Type
-				</th>
-				<th class="visible-lg col-lg-1 golfer_column_heading">
 					Start
 				</th>
 				<th class="visible-lg col-lg-1 golfer_column_heading">
 					Winner gets
+				</th>
+				<th class="visible-lg col-lg-1 golfer_column_heading">
+					2nd gets
 				</th>
 				<th class="visible-lg col-lg-1 golfer_column_heading">
 					Multiwin gets
@@ -53,13 +53,13 @@
 						{{ tournament.tournament_name }}
 					</td>
 					<td class="visible-lg col-lg-1">
-						{{ tournament.tournament_type.tournament_type }}
-					</td>
-					<td class="visible-lg col-lg-1">
 						{{ tournament.picks_lock_date|date:"F j" }}
 					</td>
 					<td class="visible-lg col-lg-1">
 						{{ tournament.anyone }}
+					</td>
+					<td class="visible-lg col-lg-1">
+						{{ tournament.tournament_second_place_winnings }}
 					</td>
 					<td class="visible-lg col-lg-1">
 						{{ tournament.multiwin }}
@@ -88,6 +88,10 @@
 				        			<td class="col-xs-7 col-sm-10">{{ tournament.anyone }}</td>
 				        		</tr>
 				        		<tr>
+				        			<td class="col-xs-5 col-sm-2 detail_label">2nd gets:</td>
+				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_second_place_winnings }}</td>
+				        		</tr>
+				        		<tr>
 				        			<td class="col-xs-5 col-sm-2 detail_label">Multi-win gets:</td>
 				        			<td class="col-xs-7 col-sm-10">{{ tournament.multiwin }}</td>
 				        		</tr>
@@ -102,10 +106,6 @@
 				        		<tr>
 				        			<td class="col-xs-5 col-sm-2 detail_label">2nd place:</td>
 				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_second_place.user_team_name|default:"N/A" }}</td>
-				        		</tr>
-				        		<tr>
-				        			<td class="col-xs-5 col-sm-2 detail_label">2nd winnings:</td>
-				        			<td class="col-xs-7 col-sm-10">{{ tournament.tournament_second_place_winnings|default:"N/A" }}</td>
 				        		</tr>
 				        	</table>
 				        </div>
