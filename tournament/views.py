@@ -67,6 +67,8 @@ class GetTeamForUserForTournament(views.JSONResponseMixin, views.AjaxResponseMix
     def get_ajax(self, request, *args, **kwargs):
         response = {}
 
+        tournament = Tournament.objects.get(tournament_id=int(self.kwargs['tournament_id']))
+
         user_team_members = TeamMember.objects.filter(
                                                       user_id=int(self.kwargs['user_id']),
                                                       tournament_id=int(self.kwargs['tournament_id'])
@@ -76,7 +78,8 @@ class GetTeamForUserForTournament(views.JSONResponseMixin, views.AjaxResponseMix
                                                                  )
 
         team_html = render_to_string('tournament/user_team_for_tournament.html', {
-                                                                                  'team_members': user_team_members
+                                                                                  'team_members': user_team_members,
+                                                                                  'tournament': tournament
                                                                                   })
 
         response['team_html'] = team_html

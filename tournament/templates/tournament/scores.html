@@ -72,7 +72,7 @@
 								<div class="panel-body" id="team_score_list_{{ team_score.user_id }}" style="padding:10px 3px;">
 									<!-- check if user_id in loop is the logged in user, if so, show their team so user does not have to click on it -->
 									{% if team_score.user_id == view.current_user_id %}
-										{% include "tournament/user_team_for_tournament.html" with team_members=view.team_for_tournament_for_current_user %}
+										{% include "tournament/user_team_for_tournament.html" with team_members=view.team_for_tournament_for_current_user tournament=view.tournament %}
 									{% endif %}
 								</div>
 							</div>

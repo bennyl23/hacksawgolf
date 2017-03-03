@@ -33,13 +33,14 @@
 				<td class="hidden-xs col-sm-1">
 					{{ team_member.times_picked }}
 				</td>
-				<td class="col-xs-2 col-sm-1" >
+				<!-- STP is orange if under tournament's in contention score (and in contention is not none and stp is not none) -->
+				<td class="col-xs-2 col-sm-1 {% if team_member.score_to_par != None and tournament.in_contention != None and team_member.score_to_par <= tournament.in_contention %}orange{% endif %}">
 					{{ team_member.score_to_par_converted }}
 				</td>
-				<td class="col-xs-2 col-sm-1" >
+				<td class="col-xs-2 col-sm-1">
 					{{ team_member.status_converted }}
 				</td>
-				<td class="col-xs-2 col-sm-1" >
+				<td class="col-xs-2 col-sm-1">
 					{{ team_member.winnings }}
 				</td>
 				<td class="col-xs-1 col-sm-4 col-md-5">&nbsp;</td>
