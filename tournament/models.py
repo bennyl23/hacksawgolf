@@ -12,8 +12,8 @@ class TournamentsManager(models.Manager):
         """Return a tournament model instance for the current week"""
         try:
             tournament = Tournament.objects.get(
-                start_date__lte=datetime.date.today(),
-                end_date__gte=datetime.date.today()
+                start_date__lte=datetime.datetime.now(),
+                end_date__gte=datetime.datetime.now()
             )
         except Tournament.DoesNotExist:
             tournament = Tournament.objects.get(tournament_week=1)
