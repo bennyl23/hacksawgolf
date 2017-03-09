@@ -22,6 +22,7 @@ $( document ).ready(function($) {
 		- scores page
 		- fetch team for selected team name and append response html
 	*/
+	/* COLLAPSIBLE/EXPANDABLE TEAMS NOT NEEDED FOR RIGHT NOW
 	$("div[id^='team_score_content_']").on('shown.bs.collapse', function () {
 		var user_id_for_scores = $(this).attr('data-user-id');
 		var tournament_id_for_scores = $("#tournament_id").val();
@@ -44,6 +45,7 @@ $( document ).ready(function($) {
 
 		}
 	});
+	*/
 
 	/*
 		- standings page

@@ -6,6 +6,7 @@ from braces import views
 from django.views.generic import View
 from django.template.loader import render_to_string
 from team.models import TeamMember
+from django.utils.functional import cached_property
 
 
 class ScoresView(TemplateView):
@@ -33,6 +34,14 @@ class ScoresView(TemplateView):
         tournament_scores = TournamentScoresView.objects.filter(tournament_id=tournament.tournament_id).order_by('-tot_winnings', '-tot_winnings_for_year', 'user_team_name')
 
         return tournament_scores
+
+    @cached_property
+    def team_members(self):
+        tournament = self.tournament()
+
+        team_members = TeamMember.objects.filter(tournament_id=tournament.tournament_id).order_by('user_id','-salary')
+
+        return team_members
 
     def current_user_id(self):
         return self.request.session['user_id']

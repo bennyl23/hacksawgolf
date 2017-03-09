@@ -1,34 +1,29 @@
 <table class="table table-condensed" style="margin-bottom:0;">
 	<thead>
 		<tr>
-			<th class="col-xs-5 col-sm-4 col-md-3 golfer_column_heading">
+			<th class="col-xs-5 col-sm-4 golfer_column_heading">
 				Golfer
 			</th>
-			<th class="hidden-xs col-sm-1 golfer_column_heading">
+			<th class="hidden-xs col-sm-2 golfer_column_heading">
 				Pkd
 			</th>
-			<th class="col-xs-2 col-sm-1 golfer_column_heading">
+			<th class="col-xs-2 golfer_column_heading">
 				STP
 			</th>
-			<th class="col-xs-2 col-sm-1 golfer_column_heading">
+			<th class="col-xs-2 golfer_column_heading">
 				Sts
 			</th>
-			<th class="col-xs-2 col-sm-1 golfer_column_heading">
+			<th class="col-xs-2 golfer_column_heading">
 				Pts
 			</th>
-			<th class="col-xs-1 col-sm-4 col-md-5">&nbsp;</th>
+			<th class="col-xs-1">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody style="font-size:11px;">
 		{% for team_member in team_members %}
 			<tr class="{% cycle 'row_odd' 'row_even' %}">
 				<td class="col-xs-5 col-sm-4 col-md-3">
-					<span class="visible-xs">
-						{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
-					</span>
-					<span class="hidden-xs">
-						{{ team_member.golfer_lname }}, {{ team_member.golfer_fname }}
-					</span>
+					{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
 				</td>
 				<td class="hidden-xs col-sm-1">
 					{{ team_member.times_picked }}
