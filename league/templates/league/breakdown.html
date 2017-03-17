@@ -26,9 +26,12 @@
 						Pkd
 					</th>
 					<th class="col-xs-2 col-sm-1 golfer_column_heading">
+						Sal
+					</th>
+					<th class="col-xs-2 col-sm-1 golfer_column_heading">
 						Sts
 					</th>
-					<th class="col-xs-2 col-sm-6 col-md-7 golfer_column_heading">
+					<th class="hidden-xs col-sm-5 col-md-6 golfer_column_heading">
 						Pts
 					</th>
 				</tr>
@@ -49,9 +52,12 @@
 							{{ golfer.times_picked }}
 						</td>
 						<td class="col-xs-2 col-sm-1">
+							{{ golfer.salary }}
+						</td>
+						<td class="col-xs-2 col-sm-1">
 							{{ golfer.status_converted }}
 						</td>
-						<td class="col-xs-2 col-sm-6 col-md-7">
+						<td class="hidden-xs col-sm-5 col-md-6">
 							{{ golfer.winnings }}
 						</td>
 					</tr>
