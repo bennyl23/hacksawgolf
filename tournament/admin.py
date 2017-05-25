@@ -1,5 +1,6 @@
 from django.contrib import admin
 from tournament.models import Tournament, TournamentParticipant, TournamentType
+from team.models import Team
 from django.db import models
 from django.forms import TextInput
 
@@ -17,6 +18,39 @@ class TournamentTypeAdmin(admin.ModelAdmin):
     list_display = ['tournament_type', 'tournament_type_five_mdc', 'tournament_type_six_mdc', 'tournament_type_winnings_multiplier']
 
 
+# custom tournament participant filter to see who has or has not been picked for that tournament
+class TournamentParticipantWasPickedFilter(admin.SimpleListFilter):
+    parameter_name = 'was_picked'
+    title = 'picked'
+    YES = 'was_picked'
+    NO = 'was_not_picked'
+
+    def lookups(self, request, model_admin):
+        return (
+                (self.YES, 'Yes'),
+                (self.NO, 'No'),
+        )
+
+    def queryset(self, request, queryset):
+        # get a queryset of distinct golfer_id's from the team table
+        if 'tournament__tournament_id__exact' in request.GET:
+            # if the page is already being filtered by tournament, the tournament_id must be passed to the team_t query
+            tournament_id_filter = request.GET['tournament__tournament_id__exact']
+            q_golfer_id_was_picked = Team.objects.filter(tournament__tournament_id=tournament_id_filter).order_by('golfer_id').values('golfer_id').distinct()
+        else:
+            q_golfer_id_was_picked = Team.objects.order_by('golfer_id').values('golfer_id').distinct()
+
+        # convert the queryset into a list to use in the filters
+        lst_golfer_id_was_picked = q_golfer_id_was_picked.values_list('golfer_id', flat=True)
+
+        if self.value() == self.YES:
+            return queryset.filter(golfer_id__in=lst_golfer_id_was_picked)
+        if self.value() == self.NO:
+            return queryset.exclude(golfer_id__in=lst_golfer_id_was_picked)
+
+        return queryset
+
+
 class TournamentParticipantAdmin(admin.ModelAdmin):
     # default tournament to the current tournament
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
@@ -28,8 +62,8 @@ class TournamentParticipantAdmin(admin.ModelAdmin):
     list_display = ['get_golfer_lname', 'get_golfer_fname', 'tournament', 'salary', 'score_to_par', 'winnings', 'status', 'made_the_cut']
     list_editable = ['salary', 'score_to_par', 'winnings', 'status', 'made_the_cut']
     list_per_page = 300
-    list_filter = ['made_the_cut', 'tournament']
-    ordering = ('-tournament__tournament_week', 'golfer__golfer_lname',)
+    list_filter = [TournamentParticipantWasPickedFilter, 'made_the_cut', 'tournament']
+    ordering = ('-tournament__tournament_week', 'golfer__golfer_lname', 'golfer__golfer_fname',)
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'10'})}
     }
