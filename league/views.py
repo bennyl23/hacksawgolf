@@ -96,6 +96,9 @@ class TeamCompareView(FormView):
                                                               ).order_by(
                                                                          'tournament_week'
                                                                          )
+        team_one_scores = list(team_one_scores)
+        team_two_scores = list(team_two_scores)
+
         team_compare_list = []
         team_one_user = User.objects.get(user_id=team_one_user_id)
         team_two_user = User.objects.get(user_id=team_two_user_id)
@@ -109,25 +112,24 @@ class TeamCompareView(FormView):
 
         for team_one_score in team_one_scores:
             team_compare_dict = {}
+            team_two_winnings = 0
 
-            try:
-                team_two_score = team_two_scores.get(tournament_id=team_one_score.tournament_id)
-            except:
-                # if there was an getting a matching score for team two, send back an error
-                team_compare_error = 'There was a problem comparing teams.  One of the selected teams may have missed a tournament.'
-                break
+            for team_two_score in team_two_scores:
+                if team_two_score.tournament_id == team_one_score.tournament_id:
+                    team_two_winnings = team_two_score.tot_winnings
+                    break
 
             team_compare_dict['tournament_name'] = team_one_score.tournament_name
             team_compare_dict['tournament_abbrv'] = team_one_score.tournament_abbrv
             team_compare_dict['team_one_score'] = team_one_score.tot_winnings
-            team_compare_dict['team_two_score'] = team_two_score.tot_winnings
+            team_compare_dict['team_two_score'] = team_two_winnings
             team_compare_dict['team_one_winner'] = False
             team_compare_dict['team_two_winner'] = False
             team_compare_dict['tie'] = False
-            if team_one_score.tot_winnings > team_two_score.tot_winnings:
+            if team_one_score.tot_winnings > team_two_winnings:
                 team_compare_dict['team_one_winner'] = True
                 team_one_wins += 1
-            elif team_two_score.tot_winnings > team_one_score.tot_winnings:
+            elif team_two_winnings > team_one_score.tot_winnings:
                 team_compare_dict['team_two_winner'] = True
                 team_two_wins += 1
             else:

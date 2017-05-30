@@ -50,6 +50,8 @@
 
 	{% elif team_compare_list %}
 
+		{{ team_one_scores_eval_queryset }}
+
 		<div id="team_compare_container">
 			<div class="row {% if team_one_better %}text_winner{% elif team_two_better %}text-muted{% endif %}">
 				<div class="col-xs-8 col-sm-4 col-md-3">
