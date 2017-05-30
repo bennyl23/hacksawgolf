@@ -139,6 +139,7 @@ class TournamentScoresView(models.Model):
     tot_winnings = models.IntegerField()
     mtc_count = models.IntegerField()
     tot_winnings_for_year = models.IntegerField()
+    tournament_winner = models.IntegerField()
 
     class Meta:
         managed = False

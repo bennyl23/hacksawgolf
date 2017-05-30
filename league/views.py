@@ -87,12 +87,14 @@ class TeamCompareView(FormView):
         team_two_user_id = form.cleaned_data['team_two_compare'].user_id
 
         team_one_scores = TournamentScoresView.objects.filter(
-                                                              user_id=int(team_one_user_id)
+                                                              user_id=int(team_one_user_id),
+                                                              tournament_winner__isnull=False
                                                               ).order_by(
                                                                          'tournament_week'
                                                                          )
         team_two_scores = TournamentScoresView.objects.filter(
-                                                              user_id=int(team_two_user_id)
+                                                              user_id=int(team_two_user_id),
+                                                              tournament_winner__isnull=False
                                                               ).order_by(
                                                                          'tournament_week'
                                                                          )
