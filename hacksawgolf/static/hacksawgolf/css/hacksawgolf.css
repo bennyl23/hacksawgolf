@@ -186,6 +186,25 @@ tr.row_even:hover {
 }
 /* end standings styles */
 
+/* team compare styles */
+#team_compare_container {
+	margin: 10px 0;
+	padding: 10px 0;
+	border-top: 1px solid #efd1b1;
+	border-bottom: 1px solid #efd1b1;
+}
+#team_compare_container div {
+	font-size: 16px;
+}
+#team_compare_table th {
+	font-size: 12px;
+	font-weight: bold;
+}
+.text_winner {
+	color: #009d78;
+}
+/* end team compare styles */
+
 /* blog styles */
 .blog_subject {
 	font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;

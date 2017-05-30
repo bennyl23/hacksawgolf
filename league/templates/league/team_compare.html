@@ -1,0 +1,121 @@
+{% extends "hacksawgolf/base_site.html" %}
+
+{% block title %}Hacksaw Golf | Team Compare{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="page_heading">
+				Team Compare
+			</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			<form action="{% url 'league:team_compare' %}" method="post" class="form-horizantal">{% csrf_token %}
+
+				{% for field in form %}
+
+					<div class="form-group {% if field.errors %}has-error{% endif %}">
+						{{ field.label_tag }}
+						{{ field }}
+
+						{% for error in field.errors %}
+							<ul class="text-danger" style="padding-left:0px">{{ error }}</ul>
+						{% endfor %}
+					</div>
+
+				{% endfor %}
+
+				<div style="margin-bottom:10px;">
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Compare</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	{% if team_compare_error %}
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="alert alert-danger page_error" style="margin-top:10px;">
+					{{ team_compare_error }}
+				</div>
+			</div>
+		</div>
+
+	{% elif team_compare_list %}
+
+		<div id="team_compare_container">
+			<div class="row {% if team_one_better %}text_winner{% elif team_two_better %}text-muted{% endif %}">
+				<div class="col-xs-8 col-sm-4 col-md-3">
+					{{ team_one_user.user_team_name }}
+				</div>
+				<div class="col-xs-4 col-sm-8 col-md-9">
+					{{ team_one_wins }}
+				</div>
+			</div>
+			<div class="row {% if team_two_better %}text_winner{% elif team_one_better %}text-muted{% endif %}">
+				<div class="col-xs-8 col-sm-4 col-md-3">
+					{{ team_two_user.user_team_name }}
+				</div>
+				<div class="col-xs-4 col-sm-8 col-md-9">
+					{{ team_two_wins }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-8 col-sm-4 col-md-3" style="font-size:12px; font-style:italic;">
+					Ties
+				</div>
+				<div class="col-xs-4 col-sm-8 col-md-9" style="font-size:12px; font-style:italic;">
+					{{ ties }}
+				</div>
+			</div>
+		</div>
+
+		<table class="table table-condensed table-striped" id="team_compare_table">
+			<thead>
+				<tr>
+					<th class="col-xs-4 col-md-4">&nbsp;</th>
+					<th class="col-xs-4 col-md-3 team_compare_heading">
+						{{ team_one_user.user_team_name }}
+					</th>
+					<th class="col-xs-4 col-md-3 team_compare_heading">
+						{{ team_two_user.user_team_name }}
+					</th>
+					<th class="col-md-2">&nbsp;</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				{% for scores in team_compare_list %}
+
+					<tr>
+						<td class="col-xs-4 col-md-4">
+							<span class="hidden-xs">{{ scores.tournament_name }}</span>
+							<span class="visible-xs">{{ scores.tournament_abbrv }}</span>
+						</td>
+						<td class="col-xs-4 col-md-3 {% if scores.team_one_score > scores.team_two_score %}text_winner bold{% endif %}">
+							{{ scores.team_one_score }}
+						</td>
+						<td class="col-xs-4 col-md-3 {% if scores.team_two_score > scores.team_one_score %}text_winner bold{% endif %}">
+							{{ scores.team_two_score }}
+						</td>
+						<td class="col-md-2">&nbsp;</td>
+					</tr>
+
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+	{% endif %}
+
+</div>
+
+{% endblock %}

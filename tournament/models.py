@@ -135,6 +135,7 @@ class TournamentScoresView(models.Model):
     winnings = models.IntegerField()
     tournament_week = models.IntegerField()
     tournament_name = models.CharField(max_length=255)
+    tournament_abbrv = models.CharField(max_length=20)
     tot_winnings = models.IntegerField()
     mtc_count = models.IntegerField()
     tot_winnings_for_year = models.IntegerField()
