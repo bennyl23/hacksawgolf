@@ -12,3 +12,12 @@
 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 	</a>
 {% endif %}
+
+<div class="sub_heading" style="margin-top:10px;">
+	<span class="text-muted">{{ tournament.tournament_location }}</span>
+</div>
+<div class="sub_heading">
+	<span class="inline_block text-muted"><em>1st:</em> {{ tournament.anyone }}</span>
+	<span class="inline_block text-muted"><em>2nd:</em> {{ tournament.tournament_second_place_winnings }}</span>
+	<span class="inline_block text-muted"><em>Multi:</em> {{ tournament.multiwin }}</span>
+</div>

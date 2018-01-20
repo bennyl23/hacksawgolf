@@ -9,6 +9,14 @@
 .page_heading small {
 	color: #009d78;
 }
+.page_heading .sub_heading {
+	font-size: 13px;
+	margin-top: 3px;
+}
+.page_heading .sub_heading .inline_block {
+	display: inline-block;
+	margin-right:10px;
+}
 .bold {
 	font-weight: bold;
 }
