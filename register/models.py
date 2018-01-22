@@ -13,7 +13,7 @@ class User(models.Model):
     user_af2 = models.CharField(max_length=30, blank=True)
     user_real_name = models.CharField(max_length=50, blank=True)
     user_paid = models.BooleanField(default=False)
-    message_from_commish = HTMLField()
+    message_from_commish = HTMLField(blank=True)
     user_reset_password = models.IntegerField(blank=True, null=True)
 
     class Meta:
