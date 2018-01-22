@@ -135,5 +135,5 @@ TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "admin/js/tinymce/")
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "modern",
     'plugins': "textcolor,emoticons",
-    'toolbar': "fontselect fontsizeselect| forecolor | bold italic underline strikethrough | emoticons | alignleft aligncenter alignright"
+    'toolbar': "fontselect fontsizeselect | forecolor | bold italic underline strikethrough | emoticons | alignleft aligncenter alignright"
 }
