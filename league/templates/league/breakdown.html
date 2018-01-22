@@ -31,7 +31,10 @@
 					<th class="col-xs-2 col-sm-1 golfer_column_heading">
 						STP
 					</th>
-					<th class="hidden-xs col-sm-5 col-md-6 golfer_column_heading">
+					<th class="hidden-xs col-sm-1 col-md-1 golfer_column_heading">
+						Sts
+					</th>
+					<th class="hidden-xs col-sm-4 col-md-5 golfer_column_heading">
 						Pts
 					</th>
 				</tr>
@@ -57,7 +60,10 @@
 						<td class="col-xs-2 col-sm-1">
 							{{ golfer.score_to_par_converted }}
 						</td>
-						<td class="hidden-xs col-sm-5 col-md-6">
+						<td class="hidden-xs col-sm-1 col-md-1">
+							{{ golfer.status_converted }}
+						</td>
+						<td class="hidden-xs col-sm-4 col-md-5">
 							{{ golfer.winnings }}
 						</td>
 					</tr>

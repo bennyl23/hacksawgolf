@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password
+from tinymce.models import HTMLField
 
 
 class User(models.Model):
@@ -12,7 +13,7 @@ class User(models.Model):
     user_af2 = models.CharField(max_length=30, blank=True)
     user_real_name = models.CharField(max_length=50, blank=True)
     user_paid = models.BooleanField(default=False)
-    message_from_commish = models.TextField(blank=True)
+    message_from_commish = HTMLField()
     user_reset_password = models.IntegerField(blank=True, null=True)
 
     class Meta:

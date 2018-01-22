@@ -59,7 +59,7 @@ class TournamentParticipantAdmin(admin.ModelAdmin):
         return super(TournamentParticipantAdmin, self).formfield_for_foreignkey (db_field, request, **kwargs)
 
     fields = ['tournament', 'golfer', 'salary', 'score_to_par', 'winnings', 'status', 'made_the_cut']
-    list_display = ['get_golfer_lname', 'get_golfer_fname', 'tournament', 'salary', 'score_to_par', 'winnings', 'status', 'made_the_cut']
+    list_display = ['get_golfer_lname', 'get_golfer_fname', 'tournament', 'salary', 'score_to_par', 'status', 'winnings', 'made_the_cut']
     list_editable = ['salary', 'score_to_par', 'winnings', 'status', 'made_the_cut']
     list_per_page = 300
     list_filter = [TournamentParticipantWasPickedFilter, 'made_the_cut', 'tournament']

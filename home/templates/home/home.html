@@ -6,12 +6,18 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12">
+		<div class="col-xs-12 col-sm-7">
 			<h3 class="page_heading">
 				{{ view.user.user_team_name }}
 				{% include "home/team_week_navigate.html" with tournament=view.tournament tournament_count=view.tournament_count %}
 			</h3>
 		</div>
+		{% if view.user.message_from_commish %}
+			<div class="hidden-xs col-sm-5">
+				<div class="bold dark_green" style="margin-top:3px;">Note for you:</div>
+				<div>{% autoescape off %}{{ view.user.message_from_commish }}{% endautoescape %}</div>
+			</div>
+		{% endif %}
 	</div>
 
 	{% if view.tournament.tournament_locked %}

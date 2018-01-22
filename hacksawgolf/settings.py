@@ -133,5 +133,7 @@ EMAIL_PORT = 25
 TINYMCE_JS_URL = os.path.join(STATIC_URL, "admin/js/tinymce/tinymce.min.js")
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, "admin/js/tinymce/")
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': "modern"
+    'theme': "modern",
+    'plugins': "textcolor,emoticons",
+    'toolbar': "fontselect fontsizeselect| forecolor | bold italic underline strikethrough | emoticons | alignleft aligncenter alignright"
 }
