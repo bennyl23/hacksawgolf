@@ -92,7 +92,7 @@ $( document ).ready(function($) {
         "bAutoWidth": false,
 		"bProcessing": false,
 		"aaSorting": [[ 1, "desc"]],
-		"aoColumns": [null, null, null, null, null]
+		"aoColumns": [null, null, null, null, null, null]
 	});
 
 	/* END LISTENERS*/
