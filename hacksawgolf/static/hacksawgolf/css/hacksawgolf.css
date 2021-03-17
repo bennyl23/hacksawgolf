@@ -65,6 +65,12 @@ tr.row_even:hover {
     border: 1px solid #999;
     background-color: #FFFFFF !important;
 }
+.fs_12 {
+	font-size: 12px;
+}
+.fs_13 {
+	font-size: 13px;
+}
 
 /* fonts */
 .ubuntu {
@@ -86,6 +92,9 @@ tr.row_even:hover {
 }
 .orange {
 	color: #f1912b !important;
+}
+.red {
+	color: red !important;
 }
 /* end global styles */
 
@@ -186,6 +195,16 @@ tr.row_even:hover {
 	font-size: 11px;
 	color: #919499;
 }
+
+.in_contention_banner_score {
+	font-weight:bold;
+	font-size:16px;
+	display:inline-block;
+	padding:1px 4px;
+	background-color:white;
+	border: 1px solid #3b3939;
+}
+
 /* end scores styles */
 
 /* standings styles */
