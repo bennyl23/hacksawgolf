@@ -98,7 +98,7 @@
 																{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
 															</td>
 															<!-- STP is orange if under tournament's in contention score (and in contention is not none and stp is not none) -->
-															<td class="col-xs-2 {% if team_member.score_to_par != None and tournament.in_contention != None and team_member.score_to_par <= tournament.in_contention %}red bold fs_13{% endif %}">
+															<td class="col-xs-2 {% if team_member.score_to_par != None and tournament.in_contention != None and team_member.score_to_par <= tournament.in_contention %}red bold{% endif %}">
 																{{ team_member.score_to_par_converted }}
 															</td>
 															<td class="col-xs-2">
