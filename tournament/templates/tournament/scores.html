@@ -23,7 +23,7 @@
 					<div style="background-color:#686666; padding:10px; margin-bottom:10px; border-radius:10px;">
 						<span style="color:#EDEDED; font-weight:bold;">In contention score:</span>
 						&nbsp;
-						<span class="in_contention_banner_score red">{{ tournament.in_contention_converted }}</span>
+						<span style="font-weight:bold; font-size:16px;" class="orange">{{ tournament.in_contention_converted }}</span>
 					</div>
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 																{{ team_member.golfer_lname }}, {{ team_member.golfer_fname_initial }}
 															</td>
 															<!-- STP is orange if under tournament's in contention score (and in contention is not none and stp is not none) -->
-															<td class="col-xs-2 {% if team_member.score_to_par != None and tournament.in_contention != None and team_member.score_to_par <= tournament.in_contention %}red bold fs_12{% endif %}">
+															<td class="col-xs-2 {% if team_member.score_to_par != None and tournament.in_contention != None and team_member.score_to_par <= tournament.in_contention %}orange bold{% endif %}">
 																{{ team_member.score_to_par_converted }}
 															</td>
 															<td class="col-xs-2">
